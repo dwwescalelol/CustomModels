@@ -2,12 +2,48 @@
 A compilation of the work done in my Machine Learning module. A naive attempt to replicate the behavior of built in MATLAB machine learning models. All the fit functions work identical to the inbuilt MATLAB fit functions.
 
 # Models
-The models that have been made are:
+I made only a small selection of models with limited hyperparameters as these models were all we covered on the course. Below are listed the models are their hyperparameters:
 + Naive Bayes
 + KNN
-  - Using naive brute force search.
-  - Using k-d search
+  - NumNeighbours
+  - K-d tree or exaustive search
 + Decision Tree
+  - MaxNumSplits
+  - MinParentSize
 + Perceptron (Net with 0 hidden layers)
+  - Learning Rate
+  - Function
 + Ensemble
-  - All models use same template featur as MATLAB.
+  - Method
+    - Soft Vote
+    - Sub Space
+    - Bagging
+  - Learners
+    - Naive Bayes
+    - KNN
+    - Decision Tree
+  - NumLearningCycles
+  - NFeaturesToSample
+
+
+# Using The Project
+## Using Models
+Below shows how to use my models. They are exactly the same as the default
+```matlab
+% make knn model with training data
+m_knn = my_fitcknn(train_examples, train_labels, 'NumNeighbours', 3)
+
+predictions = m_knn.predict(test_examples)
+preformance = sum(predictions == train_labels)/height(train_labels)
+```
+
+## Using Ensemble
+The ensembles also work the same as the default.
+```matlab
+% ensamble with NB and KNN
+m_en = my_fitcensemble(train_examples,train_labels, ...
+    'Learners', {my_templateKNN('NumNeighbors',5), my_templateNB});
+  
+predictions = m_en.predict(test_examples)
+preformance = sum(predictions == train_labels)/height(train_labels)
+```
