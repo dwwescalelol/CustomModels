@@ -10,4 +10,4 @@ The models that have been made are:
 + Decision Tree
 + Perceptron (Net with 0 hidden layers)
 + Ensemble
- - All models use same a
+ - All models use same template featur as MATLAB.
